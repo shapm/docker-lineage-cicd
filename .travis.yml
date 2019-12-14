@@ -1,0 +1,6 @@
+language: bash
+services: docker
+before_install:
+  - docker pull lineageos4microg/docker-lineage-cicd
+script:
+  - docker run -e "BRANCH_NAME=lineage-16.0" -e "DEVICE_LIST=guacamole" -e "SIGN_BUILDS=true" -e "SIGNATURE_SPOOFING=restricted" -e "CUSTOM_PACKAGES=GmsCore GsfProxy FakeStore MozillaNlpBackend NominatimNlpBackend com.google.android.maps.jar FDroid FDroidPrivilegedExtension " -e "OTA_URL=https://build.sha.zone/" -e "WITH_SU=false" lineageos4microg/docker-lineage-cicd
